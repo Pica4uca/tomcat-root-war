@@ -26,6 +26,6 @@ jobs:
            echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
            chmod 600 ~/.ssh/id_rsa
            ssh-keyscan -H "${{ secrets.IP_ADDR }}" >> ~/.ssh/known_hosts
-       - name: Передача файлов
-         run: |
-           scp -r ./target/ROOT.war "${{ secrets.ACCOUNT }}"@"${{ secrets.IP_ADDR }}":/home/alexander/
+   #    - name: Передача файлов
+   #      run: |
+   #        scp -r ./target/ROOT.war "${{ secrets.ACCOUNT }}"@"${{ secrets.IP_ADDR }}":/home/alexander/
