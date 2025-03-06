@@ -26,5 +26,7 @@ jobs:
           user: ${{ secrets.ACCOUNT }}
           pass: ${{ secrets.SSH_KEY }}
           port: 22
+          first_ssh: |           
+           ls -la 
           scp: |
                 './ROOT.war*' => /home/alexander/
