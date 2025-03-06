@@ -15,3 +15,7 @@ jobs:
          with:
              distribution: 'oracle'
              java-version: '21'
+             cache: 'maven'
+             cache-dependency-path: 'sub-project/pom.xml' # optional
+       - name: Build
+         run: mvn clean install
