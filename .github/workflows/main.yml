@@ -27,4 +27,7 @@ jobs:
            ssh-keyscan -H "${{ secrets.IP_ADDR }}" >> ~/.ssh/known_hosts
        - name: Передача файлов
          run: |
-          scp -r ./target/ROOT.war "${{ secrets.ACCOUNT }}"@"${{ secrets.IP_ADDR }}":/home/alexander/
+          scp -r ./target/ROOT.war "${{ secrets.ACCOUNT }}"@"${{ secrets.IP_ADDR }}":/home/alexander/temp/
+       - name: Запуск Ansible
+         run: |
+          ssh -i ~/.ssh/id_rsa "${{ secrets.ACCOUNT }}"@"${{ secrets.IP_ADDR }}" "ansible-playbook /home/alexander/ansible/playbook.yml -e ansible_python_interpreter=/usr/bin/python3.12"
