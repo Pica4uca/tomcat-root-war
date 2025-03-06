@@ -26,4 +26,4 @@ jobs:
           host: ${{ secrets.IP_ADDR }}
           username: ${{ secrets.ACCOUNT }}
           key: ${{ secrets.SSH_KEY }}
-        #  remote_dir: 
+          remote_dir: '/home/alexander'
