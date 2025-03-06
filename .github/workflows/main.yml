@@ -20,10 +20,12 @@ jobs:
        - name: Build
          run: mvn clean install
        - name: ssh scp ssh pipelines
-         uses: betanzos/scp-upload@v1
-         with:
-          sourse: "./target/ROOT.war"
-          host: ${{ secrets.IP_ADDR }}
-          username: ${{ secrets.ACCOUNT }}
-          key: ${{ secrets.SSH_KEY }}
-          remote_dir: '/home/alexander'
+       - name: Установка SSH-ключа
+         run: |
+           mkdir -p ~/.ssh
+           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+           chmod 600 ~/.ssh/id_rsa
+           ssh-keyscan -H "${{ secrets.IP_ADDR }}" >> ~/.ssh/known_hosts
+       - name: Передача файлов
+         run: |
+          scp -r ./target/ROOT.war "${{ secrets.ACCOUNT }}"@"${{ secrets.IP_ADDR }}":/home/alexander/
