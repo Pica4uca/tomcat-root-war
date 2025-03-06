@@ -20,13 +20,10 @@ jobs:
        - name: Build
          run: mvn clean install
        - name: ssh scp ssh pipelines
-         uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+         uses: betanzos/scp-upload@v1
          with:
+          sourse: "./target/ROOT.war"
           host: ${{ secrets.IP_ADDR }}
-          user: ${{ secrets.ACCOUNT }}
-          pass: ${{ secrets.SSH_KEY }}
-          port: 22
-          first_ssh: |           
-           ls -la 
-          scp: |
-                './ROOT.war*' => /home/alexander/
+          username: ${{ secrets.ACCOUNT }}
+          key: ${{ secrets.SSH_KEY }}
+        #  remote_dir: 
