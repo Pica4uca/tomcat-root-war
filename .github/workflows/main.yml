@@ -30,4 +30,4 @@ jobs:
           scp -r ./target/ROOT.war "${{ secrets.ACCOUNT }}"@"${{ secrets.IP_ADDR }}":/home/alexander/temp/
        - name: Запуск Ansible
          run: |
-          ssh -i ~/.ssh/id_rsa "${{ secrets.ACCOUNT }}"@"${{ secrets.IP_ADDR }}" "ansible-playbook /home/alexander/ansible/playbook.yml -e ansible_python_interpreter=/usr/bin/python3.12"
+          ssh -i ~/.ssh/id_rsa "${{ secrets.ACCOUNT }}"@"${{ secrets.IP_ADDR }}" "cd /home/alexander/ansible/ && ansible-playbook /home/alexander/ansible/playbook.yml -e ansible_python_interpreter=/usr/bin/python3.12"
