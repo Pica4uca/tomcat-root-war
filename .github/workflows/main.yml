@@ -16,6 +16,6 @@ jobs:
              distribution: 'oracle'
              java-version: '21'
              cache: 'maven'
-             cache-dependency-path: 'tomcat-root-war/pom.xml' # optional
+             cache-dependency-path: 'pom.xml' # optional
        - name: Build
          run: mvn clean install
