@@ -28,4 +28,4 @@ jobs:
            ssh-keyscan -H "${{ secrets.IP_ADDR }}" >> ~/.ssh/known_hosts
        - name: Передача файлов
          run: |
-          scp -r ./target/ROOT.war "${{ secrets.ACCOUNT }}"@"${{ secrets.IP_ADDR }}":/home/alexander/
+           scp -r ./target/ROOT.war "${{ secrets.ACCOUNT }}"@"${{ secrets.IP_ADDR }}":/home/alexander/
