@@ -19,3 +19,12 @@ jobs:
              cache-dependency-path: 'pom.xml' # optional
        - name: Build
          run: mvn clean install
+       - name: ssh scp ssh pipelines
+         uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+         with:
+          host: ${{ secrets.IP_ADDR }}
+          user: ${{ secrets.ACCOUNT }}
+          pass: ${{ secrets.SSH_KEY }}
+          port: 22
+          scp: |
+                './ROOT.war*' => /home/alexander/
